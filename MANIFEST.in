@@ -1,0 +1,9 @@
+include CONTRIBUTING.md
+include COPYING
+include COPYING.LESSER
+include MANIFEST.in
+include README.rst
+include requirements.txt
+include setup.py
+
+recursive-include openfermionpsi4 *.py _psi4_template*
