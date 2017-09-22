@@ -18,7 +18,7 @@ setup(
     version=__version__,
     author='The OpenFermion Developers',
     author_email='help@openfermiong.org',
-    url='www.openfermion.org',
+    url='https://www.openfermion.org/',
     description='A plugin allowing OpenFermion to interface with Psi4.',
     long_description=long_description,
     install_requires=requirements,
