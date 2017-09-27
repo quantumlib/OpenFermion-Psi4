@@ -1,6 +1,9 @@
 OpenFermion-Psi4
 ================
 
+.. image:: https://badge.fury.io/py/openfermionpsi4.svg
+    :target: https://badge.fury.io/py/openfermionpsi4
+
 `OpenFermion <http://openfermion.org>`__ is an open source library (licensed under Apache 2) for compiling and analyzing quantum algorithms which simulate fermionic systems.
 This plugin library allows the electronic structure package `Psi4 <http://psicode.org>`__ (licensed under GNU Lesser General Public License version 3) to interface with OpenFermion.
 
