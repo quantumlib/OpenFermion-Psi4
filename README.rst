@@ -11,17 +11,18 @@ Installation
 ------------
 
 To start using OpenFermion-Psi4, first install `OpenFermion <http://openfermion.org>`__ and
-`Psi4 <http://psicode.org>`__. Then, clone this git repo, change directory to the top level folder and run:
+`Psi4 <http://psicode.org>`__. To install the latest development version of OpenFermion-PySCF,
+clone `this <http://github.com/quantumlib/OpenFermion-Psi4>`__ git repo, change directory to the top level folder and run:
 
 .. code-block:: bash
 
   python -m pip install -e .
 
-Alternatively, one can install the most recent major release with the command:
+Alternatively, if using OpenFermion-Psi4 as a library, one can install the last official PyPI release with:
 
 .. code-block:: bash
 
-  python -m pip install openfermionpsi4
+  python -m pip install --pre --user openfermionpsi4
 
 Also be sure to take a look at the ipython notebook demos in the examples folder of this repository.
 
