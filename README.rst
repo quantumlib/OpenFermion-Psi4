@@ -18,7 +18,7 @@ clone `this <http://github.com/quantumlib/OpenFermion-Psi4>`__ git repo, change 
 
   python -m pip install -e .
 
-Alternatively, if using OpenFermion-PySCF as a library, one can install the last official PyPI release with:
+Alternatively, if using OpenFermion-Psi4 as a library, one can install the last official PyPI release with:
 
 .. code-block:: bash
 
