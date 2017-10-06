@@ -12,7 +12,7 @@ Installation
 
 To start using OpenFermion-Psi4, first install `OpenFermion <http://openfermion.org>`__ and
 `Psi4 <http://psicode.org>`__.  Note that the Psi4 package is designed specifically for the
-`Anaconda python distribution. <https://www.anaconda.com/download>`__
+`Anaconda <https://www.anaconda.com/download>`__ python distribution.
 While it is possible to install Psi4 without Anaconda, if one does use Anaconda python
 the following commands will install Psi4 and pip (needed to install OpenFermion):
 
@@ -42,7 +42,7 @@ How to contribute
 -----------------
 
 We'd love to accept your contributions and patches to OpenFermion-Psi4.
-There are a few small guidelines you need to follow.
+There are a few guidelines you need to follow.
 Contributions to OpenFermion-Psi4 must be accompanied by a Contributor License Agreement.
 You (or your employer) retain the copyright to your contribution,
 this simply gives us permission to use and redistribute your contributions as part of the project.
@@ -59,8 +59,7 @@ decrease overall test coverage by too much. Make sure you adhere to our style
 guide. Just have a look at our code for clues. We mostly follow
 `PEP 8 <https://www.python.org/dev/peps/pep-0008/>`_ and use
 the corresponding `linter <https://pypi.python.org/pypi/pep8>`_ to check for it.
-Code should always come with documentation, which is generated automatically and can be found
-`here <http://openfermion.readthedocs.io/en/latest/openfermion.html>`_.
+Code should always come with documentation.
 
 Authors
 -------
