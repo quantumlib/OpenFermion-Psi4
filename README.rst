@@ -11,8 +11,20 @@ Installation
 ------------
 
 To start using OpenFermion-Psi4, first install `OpenFermion <http://openfermion.org>`__ and
-`Psi4 <http://psicode.org>`__. To install the latest development version of OpenFermion-Psi4,
-clone `this <http://github.com/quantumlib/OpenFermion-Psi4>`__ git repo, change directory to the top level folder and run:
+`Psi4 <http://psicode.org>`__.  Note that the Psi4 package is designed specifically for the
+`Anaconda python distribution. <https://www.anaconda.com/download>`__
+While it is possible to install Psi4 without Anaconda, if one does use Anaconda python
+the following commands will install Psi4 and pip (needed to install OpenFermion):
+
+.. code-block:: bash
+
+  conda config --add channels http://conda.anaconda.org/psi4
+  python -m conda install psi4
+  python -m conda install pip
+
+Once OpenFermion and Psi4 have been installed, to install the latest development version of OpenFermion-Psi4,
+clone `this <http://github.com/quantumlib/OpenFermion-Psi4>`__ git repo,
+change directory to the top level folder and run:
 
 .. code-block:: bash
 
