@@ -68,8 +68,7 @@ Authors
 `Jarrod McClean <http://jarrodmcclean.com>`__ (Google),
 `Ian Kivlichan <http://aspuru.chem.harvard.edu/ian-kivlichan/>`__ (Harvard),
 Damian Steiger (ETH Zurich),
-Thomas Haner (ETH Zurich),
-Craig Gidney (Google) and
+Thomas Haener (ETH Zurich) and
 Dave Bacon (Google).
 
 Disclaimer
