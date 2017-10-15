@@ -1,8 +1,11 @@
+================
 OpenFermion-Psi4
 ================
 
 .. image:: https://badge.fury.io/py/openfermionpsi4.svg
     :target: https://badge.fury.io/py/openfermionpsi4
+
+.. image:: https://img.shields.io/badge/python-2.7%2C%203.4%2C%203.5%2C%203.6-brightgreen.svg
 
 `OpenFermion <http://openfermion.org>`__ is an open source library (licensed under Apache 2) for compiling and analyzing quantum algorithms which simulate fermionic systems.
 This plugin library allows the electronic structure package `Psi4 <http://psicode.org>`__ (licensed under GNU Lesser General Public License version 3) to interface with OpenFermion.
@@ -36,7 +39,8 @@ Alternatively, if using OpenFermion-Psi4 as a library, one can install the last 
 
   python -m pip install --pre --user openfermionpsi4
 
-Also be sure to take a look at the ipython notebook demos in the examples folder of this repository.
+Also be sure to take a look at the `ipython notebook demo <https://github.com/quantumlib/OpenFermion-Psi4/blob/master/examples/openfermionpsi4_demo.ipynb>`__
+in the examples folder of this repository.
 
 How to contribute
 -----------------
@@ -67,9 +71,9 @@ Authors
 `Ryan Babbush <http://ryanbabbush.com>`__ (Google),
 `Jarrod McClean <http://jarrodmcclean.com>`__ (Google),
 `Ian Kivlichan <http://aspuru.chem.harvard.edu/ian-kivlichan/>`__ (Harvard),
-Damian Steiger (ETH Zurich),
-Thomas Haener (ETH Zurich) and
-Dave Bacon (Google).
+`Damian Steiger <https://github.com/damiansteiger>`__ (ETH Zurich),
+`Thomas Haener <https://github.com/thomashaener>`__ (ETH Zurich) and
+`Dave Bacon <https://github.com/dabacon>`__ (Google).
 
 Disclaimer
 ----------
