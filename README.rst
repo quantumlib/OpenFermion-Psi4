@@ -25,22 +25,21 @@ the following commands will install Psi4 and pip (used to install OpenFermion-Ps
   python -m conda install psi4
   python -m conda install pip
 
-Once Psi4 has been installed, to install the latest development versions of OpenFermion and OpenFermion-Psi4,
-clone `this <http://github.com/quantumlib/OpenFermion-Psi4>`__ git repo,
-change directory to the top level folder and run:
+Once Psi4 has been installed, to install the latest versions of OpenFermion and OpenFermion-Psi4 in development mode:
 
 .. code-block:: bash
 
+  git clone https://github.com/quantumlib/OpenFermion-Psi4
+  cd OpenFermion-Psi4
   python -m pip install -e .
 
-Alternatively, if using OpenFermion-Psi4 as a library, one can install the last official PyPI release with:
+Alternatively, to install the latest PyPI releases as libraries (in user mode):
 
 .. code-block:: bash
 
   python -m pip install --pre --user openfermionpsi4
 
-Also be sure to take a look at the `ipython notebook demo <https://github.com/quantumlib/OpenFermion-Psi4/blob/master/examples/openfermionpsi4_demo.ipynb>`__
-in the examples folder of this repository.
+Also be sure to take a look at the `ipython notebook demo <https://github.com/quantumlib/OpenFermion-Psi4/blob/master/examples/openfermionpsi4_demo.ipynb>`__.
 
 How to contribute
 -----------------
