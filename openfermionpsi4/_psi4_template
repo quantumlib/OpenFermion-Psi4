@@ -3,9 +3,10 @@ import numpy
 import sys
 
 from openfermion.config import *
-from openfermion.ops._interaction_tensor import (one_body_basis_change,
-                                                 two_body_basis_change)
-from openfermion.utils import MolecularData
+from openfermion.hamiltonians import MolecularData
+from openfermion.ops import (one_body_basis_change,
+                             two_body_basis_change)
+
 from numpy import array
 
 sys.path.append('&THIS_DIRECTORY')
