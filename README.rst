@@ -25,7 +25,7 @@ the following commands will install Psi4 and pip (used to install OpenFermion-Ps
   python -m conda install psi4
   python -m conda install pip
 
-Once Psi4 has been installed, to install the latest versions of OpenFermion and OpenFermion-Psi4 in development mode:
+To install the latest versions of OpenFermion and OpenFermion-Psi4 (in development mode):
 
 .. code-block:: bash
 
