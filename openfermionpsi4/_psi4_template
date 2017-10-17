@@ -79,6 +79,7 @@ if &run_scf:
         molecule.hf_energy = hf_energy
         molecule.nuclear_repulsion = mol.nuclear_repulsion_energy()
         molecule.canonical_orbitals = numpy.asarray(hf_wavefunction.Ca())
+        molecule.overlap_integrals = numpy.asarray(hf_wavefunction.S())
         molecule.n_orbitals = molecule.canonical_orbitals.shape[0]
         molecule.n_qubits = 2 * molecule.n_orbitals
         molecule.orbital_energies = numpy.asarray(hf_wavefunction.epsilon_a())
