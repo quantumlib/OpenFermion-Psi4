@@ -37,7 +37,7 @@ Alternatively, to install the latest PyPI releases as libraries (in user mode):
 
 .. code-block:: bash
 
-  python -m pip install --pre --user openfermionpsi4
+  python -m pip install --user openfermionpsi4
 
 Also be sure to take a look at the `ipython notebook demo <https://github.com/quantumlib/OpenFermion-Psi4/blob/master/examples/openfermionpsi4_demo.ipynb>`__.
 
@@ -73,6 +73,31 @@ Authors
 `Damian Steiger <https://github.com/damiansteiger>`__ (ETH Zurich),
 `Thomas Haener <https://github.com/thomashaener>`__ (ETH Zurich) and
 `Dave Bacon <https://github.com/dabacon>`__ (Google).
+
+How to cite
+-----------
+When using OpenFermion-Psi4 for research projects, please cite:
+
+
+    Jarrod R. McClean, Ian D. Kivlichan, Damian S. Steiger, Yudong Cao, E.
+    Schuyler Fried, Craig Gidney, Thomas Häner, Vojtĕch Havlíček,
+    Zhang Jiang, Matthew Neeley, Jhonathan Romero, Nicholas Rubin, Nicolas P. D.
+    Sawaya, Kanav Setia, Sukin Sim, Wei Sun, Kevin Sung and Ryan Babbush.
+    *OpenFermion: The Electronic Structure Package for Quantum Computers*.
+    arXiv preprint. 2017.
+
+as well as
+
+    Robert M. Parrish, Lori A. Burns, Daniel G. A. Smith, Andrew C. Simmonett, A. Eugene DePrince III,
+    Edward G. Hohenstein , Uğur Bozkaya, Alexander Yu. Sokolov, Roberto Di Remigio, Ryan M. Richard,
+    Jérôme F. Gonthier, Andrew M. James, Harley R. McAlexander, Ashutosh Kumar, Masaaki Saitow, Xiao Wang,
+    Benjamin P. Pritchard, Prakash Verma, Henry F. Schaefer III , Konrad Patkowski, Rollin A. King,
+    Edward F. Valeev, Francesco A. Evangelista, Justin M. Turney, T. Daniel Crawford and C. David Sherrill.
+    *Psi4 1.1: An Open-Source Electronic Structure Program Emphasizing Automation, Advanced Libraries, and Interoperability*.
+    `Journal of Chemical Theory and Computation <http://pubs.acs.org/doi/abs/10.1021/acs.jctc.7b00174>`__.
+    2017.
+
+We are happy to include future contributors as authors on later OpenFermion releases.
 
 Disclaimer
 ----------
