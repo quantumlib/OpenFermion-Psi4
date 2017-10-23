@@ -71,20 +71,19 @@ Authors
 `Jarrod McClean <http://jarrodmcclean.com>`__ (Google),
 `Ian Kivlichan <http://aspuru.chem.harvard.edu/ian-kivlichan/>`__ (Harvard),
 `Damian Steiger <https://github.com/damiansteiger>`__ (ETH Zurich),
-`Thomas Haener <https://github.com/thomashaener>`__ (ETH Zurich) and
+`Thomas Häner <https://github.com/thomashaener>`__ (ETH Zurich) and
 `Dave Bacon <https://github.com/dabacon>`__ (Google).
 
 How to cite
 -----------
 When using OpenFermion-Psi4 for research projects, please cite:
 
-
     Jarrod R. McClean, Ian D. Kivlichan, Damian S. Steiger, Yudong Cao, E.
     Schuyler Fried, Craig Gidney, Thomas Häner, Vojtĕch Havlíček,
     Zhang Jiang, Matthew Neeley, Jhonathan Romero, Nicholas Rubin, Nicolas P. D.
     Sawaya, Kanav Setia, Sukin Sim, Wei Sun, Kevin Sung and Ryan Babbush.
     *OpenFermion: The Electronic Structure Package for Quantum Computers*.
-    arXiv preprint. 2017.
+    `arXiv:1710.07629 <https://arxiv.org/abs/1710.07629>`__. 2017.
 
 as well as
 
