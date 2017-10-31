@@ -214,5 +214,10 @@ def run_psi4(molecule,
         clean_up(molecule, delete_input, delete_output)
 
     # Return updated molecule instance.
-    molecule.load()
+    try:
+        molecule.load()
+    except:
+        print('No calculation saved. Psi4 segmentation fault possible.')
+        if not tolerate_error:
+            raise
     return molecule
