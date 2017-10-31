@@ -20,6 +20,7 @@ from __future__ import absolute_import
 import os
 import re
 import subprocess
+import warnings
 
 
 def create_geometry_string(geometry):
@@ -214,5 +215,9 @@ def run_psi4(molecule,
         clean_up(molecule, delete_input, delete_output)
 
     # Return updated molecule instance.
-    molecule.load()
+    try:
+        molecule.load()
+    except:
+        warnings.warn('No calculation saved. Psi4 segmentation fault possible.',
+                      Warning)
     return molecule
