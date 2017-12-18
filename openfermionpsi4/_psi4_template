@@ -4,8 +4,7 @@ import sys
 
 from openfermion.config import *
 from openfermion.hamiltonians import MolecularData
-from openfermion.ops import (one_body_basis_change,
-                             two_body_basis_change)
+from openfermion.ops._polynomial_tensor import *
 
 from numpy import array
 
@@ -87,16 +86,16 @@ if &run_scf:
 
         # Get integrals using MintsHelper.
         mints = MintsHelper(hf_wavefunction.basisset())
-        molecule.one_body_integrals = one_body_basis_change(
-            numpy.asarray(mints.ao_kinetic()), molecule.canonical_orbitals)
-        molecule.one_body_integrals += one_body_basis_change(
-            numpy.asarray(mints.ao_potential()), molecule.canonical_orbitals)
+        molecule.one_body_integrals = general_basis_change(
+            numpy.asarray(mints.ao_kinetic()), molecule.canonical_orbitals, (1, 0))
+        molecule.one_body_integrals += general_basis_change(
+            numpy.asarray(mints.ao_potential()), molecule.canonical_orbitals, (1, 0))
         two_body_integrals = numpy.asarray(mints.ao_eri())
         two_body_integrals.reshape((molecule.n_orbitals, molecule.n_orbitals,
                                     molecule.n_orbitals, molecule.n_orbitals))
         two_body_integrals = numpy.einsum('psqr', two_body_integrals)
-        two_body_integrals = two_body_basis_change(
-            two_body_integrals, molecule.canonical_orbitals)
+        two_body_integrals = general_basis_change(
+            two_body_integrals, molecule.canonical_orbitals, (1, 1, 0, 0))
         molecule.two_body_integrals = two_body_integrals
         molecule.save()
 
