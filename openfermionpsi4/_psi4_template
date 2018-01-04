@@ -4,7 +4,7 @@ import sys
 
 from openfermion.config import *
 from openfermion.hamiltonians import MolecularData
-from openfermion.ops._polynomial_tensor import general_basis_change
+from openfermion.ops import general_basis_change
 
 from numpy import array
 
