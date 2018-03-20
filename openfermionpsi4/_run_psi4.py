@@ -125,6 +125,8 @@ def generate_psi4_input(molecule,
                      for line in input_content]
     input_content = [re.sub('&tolerate_error', str(tolerate_error), line)
                      for line in input_content]
+    input_content = [re.sub('&not_tolerate_error', str(not tolerate_error), line)
+                     for line in input_content]
     input_content = [re.sub('&verbose', str(verbose), line)
                      for line in input_content]
     input_content = [re.sub('&memory', str(memory), line)
