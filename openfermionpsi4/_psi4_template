@@ -46,7 +46,7 @@ else:
 set globals {
     basis &basis
     freeze_core false
-    fail_on_maxiter true
+    fail_on_maxiter &not_tolerate_error
     df_scf_guess false
     opdm true
     tpdm true
@@ -73,7 +73,7 @@ if &run_scf:
             print('WARNING: SCF calculation failed.')
         else:
             raise
-    else:
+    finally:
         # Get orbitals and Fock matrix.
         molecule.hf_energy = hf_energy
         molecule.nuclear_repulsion = mol.nuclear_repulsion_energy()
@@ -176,7 +176,7 @@ if &run_fci:
             print('WARNING: FCI calculation failed.')
         else:
             raise
-    else:
+    finally:
         # For the functions below, "a" and "b" refer to "up and "down" spins.
         molecule.fci_energy = fci_energy
 
