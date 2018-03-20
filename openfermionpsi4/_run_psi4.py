@@ -125,7 +125,8 @@ def generate_psi4_input(molecule,
                      for line in input_content]
     input_content = [re.sub('&tolerate_error', str(tolerate_error), line)
                      for line in input_content]
-    input_content = [re.sub('&not_tolerate_error', str(not tolerate_error), line)
+    input_content = [re.sub('&not_tolerate_error',
+                            str(not tolerate_error), line)
                      for line in input_content]
     input_content = [re.sub('&verbose', str(verbose), line)
                      for line in input_content]
@@ -220,6 +221,7 @@ def run_psi4(molecule,
     try:
         molecule.load()
     except:
-        warnings.warn('No calculation saved. Psi4 segmentation fault possible.',
+        warnings.warn('No calculation saved. '
+                      'Psi4 segmentation fault possible.',
                       Warning)
     return molecule
