@@ -98,6 +98,7 @@ Authors
 `Qiming Sun <https://github.com/sunqm>`__ (Caltech),
 `Wei Sun <https://github.com/Spaceenter>`__ (Google) and
 `Fang Zhang <https://github.com/fangzh-umich>`__ (University of Michigan).
+`Daochen Wang <https://github.com/daochenw>`__ (River Lane Research).
 
 How to cite
 -----------
@@ -108,7 +109,7 @@ When using OpenFermion-Psi4 for research projects, please cite:
     Thomas Häner, Tarini Hardikar, Vojtĕch Havlíček, Cupjin Huang, Zhang Jiang,
     Matthew Neeley, Thomas O'Brien, Isil Ozfidan, Maxwell D. Radin, Jhonathan Romero,
     Nicholas Rubin, Nicolas P. D. Sawaya, Kanav Setia, Sukin Sim, Mark Steudtner,
-    Wei Sun, Fang Zhang and Ryan Babbush.
+    Wei Sun, Fang Zhang, Daochen Wang and Ryan Babbush.
     *OpenFermion: The Electronic Structure Package for Quantum Computers*.
     `arXiv:1710.07629 <https://arxiv.org/abs/1710.07629>`__. 2017.
 

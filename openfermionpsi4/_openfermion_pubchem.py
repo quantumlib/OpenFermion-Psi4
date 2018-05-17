@@ -10,69 +10,45 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-import psi4
-import pubchempy as pcp
+import pubchempy
 
 
-def parse_sdf_geometry(geom, n_atoms):
-    opf_geom = []
-    vec = geom.split('\n')[2:2 + n_atoms]
-
-    for i in range(len(vec)):
-        x = vec[i].split()[:4]
-        tup = tuple([float(x) for x in x[1:]])
-        atom = x[0].lower().capitalize()
-        opf_geom.append((atom, tup))
-
-    return opf_geom
-
-
-def parse_psi4_geometry(geom, n_atoms):
-    opf_geom = []
-    vec = geom.split('\n')[2:2 + n_atoms]
-
-    for i in range(len(vec)):
-        x = vec[i].split()[:4]
-        tup = tuple([float(x) for x in x[:3]])
-        atom = x[3].lower().capitalize()
-        opf_geom.append((atom, tup))
-    return opf_geom
-
-
-def extract(name_):
-    """Function to create MolecularData geometry from the molecule's name.
+def geometry_from_pubchem(name):
+    """Function to extract geometry using the molecule's name from the PubChem
+    database.
 
     Args:
-        name_: a string giving the molecule's name as required by the PubChem
-            database. This can be quite flexible, e.g.: 'water' or 'H2O' or
-            or 'dihyrogen oxide' for the same molecule.
+        name: a string giving the molecule's name as required by the PubChem
+            database.
 
     Returns:
-        opf_geom: a list of tuples giving the coordinates of each atom with
-        distances in Angstrom. Example is:
-        [('O', (0.0, 0.0, -0.066779921147764)),
-        ('H', (0.0, -0.763469300299257, 0.529922904804988)),
-        ('H', (-0.0, 0.763469300299257, 0.529922904804988))]
+        geometry: a list of tuples giving the coordinates of each atom with
+        distances in Angstrom.
     """
-    try:
-        name = pcp.get_compounds(name_, 'name', record_type='3d')[0]
-        mlc = psi4.geometry("""
-pubchem:{}
-""".format(name_))
-        mlc = mlc.create_psi4_string_from_molecule()
-        n_atoms = len(name.atoms)
-        opf_geom = parse_sdf_geometry(mlc, n_atoms)
-        print('3D compound found.')
 
-    except IndexError:
-        try:
-            name = pcp.get_compounds(name_, 'name', record_type='2d')[0]
-            n_atoms = len(name.atoms)
-            mlc = pcp.get_sdf(name.cid)
-            opf_geom = parse_psi4_geometry(mlc, n_atoms)
-            print('2D compound found.')
-        except IndexError:
-            opf_geom = 0
-            print("Unable to find molecule in the PubChem database.")
+    pubchempy_2d_molecule = pubchempy.get_compounds(name, 'name',
+                                                    record_type='2d')
 
-    return opf_geom
+    # Check if 2-D geometry is available. If not then no geometry is.
+    if not pubchempy_2d_molecule:
+        print('Unable to find molecule in the PubChem database.')
+        return None
+
+    # Ideally get the 3-D geometry if available.
+    pubchempy_3d_molecule = pubchempy.get_compounds(name, 'name',
+                                                    record_type='3d')
+
+    if pubchempy_3d_molecule:
+        pubchempy_geometry = \
+            pubchempy_3d_molecule[0].to_dict(properties=['atoms'])['atoms']
+        geometry = [(atom['element'], (atom['x'], atom['y'], atom['z']))
+                    for atom in pubchempy_geometry]
+        return geometry
+
+    # If the 3-D geometry isn't available, get the 2-D geometry instead.
+    pubchempy_geometry = \
+        pubchempy_2d_molecule[0].to_dict(properties=['atoms'])['atoms']
+    geometry = [(atom['element'], (atom['x'], atom['y'], 0))
+                for atom in pubchempy_geometry]
+
+    return geometry
