@@ -1,3 +1,4 @@
+import io
 import os
 
 from setuptools import setup, find_packages
@@ -6,7 +7,7 @@ from setuptools import setup, find_packages
 exec(open('openfermionpsi4/_version.py').read())
 
 # Readme file as long_description:
-long_description = open('README.rst').read()
+long_description = io.open('README.rst', encoding='utf-8').read()
 
 # Read in requirements.txt
 requirements = open('requirements.txt').readlines()
