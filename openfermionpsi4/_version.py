@@ -15,4 +15,4 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 """Define version number here and read it from setup.py automatically"""
-__version__ = "0.3"
+__version__ = "0.4"
