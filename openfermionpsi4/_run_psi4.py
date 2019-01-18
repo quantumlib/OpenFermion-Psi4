@@ -57,6 +57,7 @@ def generate_psi4_input(molecule,
                         run_ccsd,
                         run_fci,
                         verbose,
+                        localize,
                         tolerate_error,
                         memory,
                         template_file):
@@ -130,6 +131,8 @@ def generate_psi4_input(molecule,
                      for line in input_content]
     input_content = [re.sub('&verbose', str(verbose), line)
                      for line in input_content]
+    input_content = [re.sub('&localize', str(localize), line)
+                     for line in input_content]
     input_content = [re.sub('&memory', str(memory), line)
                      for line in input_content]
 
@@ -146,7 +149,10 @@ def clean_up(molecule, delete_input=True, delete_output=False):
     run_directory = os.getcwd()
     for local_file in os.listdir(run_directory):
         if local_file.endswith('.clean'):
-            os.remove(run_directory + '/' + local_file)
+            try:
+                os.remove(run_directory + '/' + local_file)
+            except:
+                pass
     try:
         os.remove('timer.dat')
     except:
@@ -164,11 +170,15 @@ def run_psi4(molecule,
              run_ccsd=False,
              run_fci=False,
              verbose=False,
+             localize=False,
              tolerate_error=False,
              delete_input=True,
              delete_output=False,
              memory=8000,
-             template_file=None):
+             template_file=None,
+             output_filename=None):
+    if output_filename == None:
+        output_filename = molecule.filename
     """This function runs a Psi4 calculation.
 
     Args:
@@ -199,12 +209,13 @@ def run_psi4(molecule,
                                      run_ccsd,
                                      run_fci,
                                      verbose,
+                                     localize,
                                      tolerate_error,
                                      memory,
                                      template_file)
 
     # Run psi4.
-    output_file = molecule.filename + '.out'
+    output_file = output_filename + '.out'
     try:
         process = subprocess.Popen(['psi4', input_file, output_file])
         process.wait()
@@ -224,4 +235,5 @@ def run_psi4(molecule,
         warnings.warn('No calculation saved. '
                       'Psi4 segmentation fault possible.',
                       Warning)
+
     return molecule

@@ -78,11 +78,51 @@ if &run_scf:
         molecule.hf_energy = hf_energy
         molecule.nuclear_repulsion = mol.nuclear_repulsion_energy()
         molecule.canonical_orbitals = numpy.asarray(hf_wavefunction.Ca())
+
+        if &localize:
+            wfn = hf_wavefunction
+            basis_ = wfn.basisset()
+            C_occ = wfn.Ca_subset("AO", "OCC") # canonical C_occ coefficients
+            print(np.array(C_occ))
+            Local = psi4.core.Localizer.build("PIPEK_MEZEY", basis_, C_occ) # Pipek-Mezey Localization
+            Local.localize()
+            new_alpha = np.array(Local.L)
+
+            #Get bOCC locals
+            C_occ = wfn.Cb_subset("AO", "OCC")
+
+            Local = psi4.core.Localizer.build("PIPEK_MEZEY", basis_, C_occ)
+            Local.localize()
+            new_beta = np.array(Local.L)
+
+            #Get aNOCC locals
+            C_nocc = wfn.Ca_subset("AO", "VIR")
+            print(np.array(C_nocc))
+            Local = psi4.core.Localizer.build("PIPEK_MEZEY", basis_, C_nocc)
+            Local.localize()
+            new_alpha_noccs = np.array(Local.L)
+
+            #Get bNOCC locals
+            C_nocc = wfn.Cb_subset("AO", "VIR")
+
+            Local = psi4.core.Localizer.build("PIPEK_MEZEY", basis_, C_nocc)
+            Local.localize()
+            new_beta_noccs = np.array(Local.L)
+
+            newa = np.hstack((new_alpha, new_alpha_noccs))
+            newb = np.hstack((new_beta, new_beta_noccs))
+            print(newa)
+            wfn.Ca().copy(psi4.core.Matrix.from_array(newa))
+            wfn.Cb().copy(psi4.core.Matrix.from_array(newb))
+
+
         molecule.overlap_integrals = numpy.asarray(hf_wavefunction.S())
         molecule.n_orbitals = molecule.canonical_orbitals.shape[0]
         molecule.n_qubits = 2 * molecule.n_orbitals
         molecule.orbital_energies = numpy.asarray(hf_wavefunction.epsilon_a())
         molecule.fock_matrix = numpy.asarray(hf_wavefunction.Fa())
+
+
 
         # Get integrals using MintsHelper.
         mints = MintsHelper(hf_wavefunction.basisset())
@@ -97,7 +137,12 @@ if &run_scf:
         two_body_integrals = general_basis_change(
             two_body_integrals, molecule.canonical_orbitals, (1, 1, 0, 0))
         molecule.two_body_integrals = two_body_integrals
+
+
+
+
         molecule.save()
+
 
 
 # Perform MP2 energy calculation if there are at least two electrons.
