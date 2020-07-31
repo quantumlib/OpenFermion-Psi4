@@ -17,7 +17,7 @@
 """This is a simple script for generating data."""
 import os
 
-from openfermion.hamiltonians import MolecularData
+from openfermion.chem import MolecularData
 
 from openfermionpsi4 import run_psi4
 

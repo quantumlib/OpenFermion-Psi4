@@ -18,7 +18,7 @@
 import numpy
 import warnings
 
-from openfermion.hamiltonians import make_atomic_ring, MolecularData
+from openfermion.chem import make_atomic_ring, MolecularData
 
 with warnings.catch_warnings():
     warnings.simplefilter('ignore')
