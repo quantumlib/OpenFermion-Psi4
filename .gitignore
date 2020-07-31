@@ -72,3 +72,9 @@ ENV/
 /site
 
 *.lprof
+
+# Pycharm
+.idea*
+
+# no data files
+*.dat

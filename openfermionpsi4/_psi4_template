@@ -3,7 +3,7 @@ import numpy
 import sys
 
 from openfermion.config import *
-from openfermion.hamiltonians import MolecularData
+from openfermion.chem import MolecularData
 from openfermion.ops import general_basis_change
 
 from numpy import array
