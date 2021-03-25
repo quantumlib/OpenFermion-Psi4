@@ -28,7 +28,7 @@ def unpack_spatial_rdm(one_rdm_a,
                        two_rdm_ab,
                        two_rdm_bb):
     """
-    Covert from spin compact spatial format to spin-orbital format for RDM.
+    Convert from spin compact spatial format to spin-orbital format for RDM.
 
     Note: the compact 2-RDM is stored as follows where A/B are spin up/down:
     RDM[pqrs] = <| a_{p, A}^\dagger a_{r, A}^\dagger a_{q, A} a_{s, A} |>
@@ -141,6 +141,7 @@ def parse_psi4_ccsd_amplitudes(number_orbitals,
     T2IJAB_Amps = []
     T2ijab_Amps = []
     T2IjAb_Amps = []
+    T2IjAb_dict = {}
 
     # Read T1's
     if (T1IA_index is not None):
@@ -184,6 +185,9 @@ def parse_psi4_ccsd_amplitudes(number_orbitals,
             T2IjAb_Amps.append([int(ivals[0]), int(ivals[1]),
                                 int(ivals[2]), int(ivals[3]),
                                 float(ivals[4])])
+
+            T2IjAb_dict[int(ivals[0]), int(ivals[1]),
+                        int(ivals[2]), int(ivals[3])] = float(ivals[4])
 
     # Determine if calculation is restricted / closed shell or otherwise
     restricted = T1ia_index is None and T2ijab_index is None
@@ -252,5 +256,20 @@ def parse_psi4_ccsd_amplitudes(number_orbitals,
                               beta_occupied(i),
                               alpha_unoccupied(b),
                               alpha_occupied(j)] = value / 2.
+
+            # Add missing same--spin amplitudes in restricted / closed-shell cases:
+            # T_IJAB = T_ijab = T_IjAb - T_IjBa
+
+            same_spin_amp = T2IjAb_dict[i,j,a,b] / 2. - T2IjAb_dict[i,j,b,a] / 2.
+
+            double_amplitudes[alpha_unoccupied(a),
+                              alpha_occupied(i),
+                              alpha_unoccupied(b),
+                              alpha_occupied(j)] = same_spin_amp / 2.
+
+            double_amplitudes[beta_unoccupied(a),
+                              beta_occupied(i),
+                              beta_unoccupied(b),
+                              beta_occupied(j)] = same_spin_amp / 2.
 
     return single_amplitudes, double_amplitudes
