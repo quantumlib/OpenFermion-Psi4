@@ -208,9 +208,12 @@ def run_psi4(molecule,
     try:
         process = subprocess.Popen(['psi4', input_file, output_file])
         process.wait()
-    except:
-        print('Psi4 calculation for {} has failed.'.format(molecule.name))
-        process.kill()
+    except Exception as ex:
+        print('Psi4 calculation for {} has failed. ({})'.format(molecule.name, ex))
+        try:
+            process.kill()
+        except:
+            pass
         clean_up(molecule, delete_input, delete_output)
         if not tolerate_error:
             raise
